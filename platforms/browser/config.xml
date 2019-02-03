@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="br.com.eagleair.eagleairlines" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Eagle Airlines</name>
+    <description>
+        Aplicativo destinado aos pilotos da companhia aérea virtual Eagle Airlines.
+    </description>
+    <author email="contato@eagleair.com.br" href="http://www.eagleair.com.br">
+        Luan Lopes
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <access origin="https://ajax.googleapis.com*" />
+    <access origin="https://fonts.googleapis.com*" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashShowOnlyFirstTime" value="false" />
+    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="Orientation" value="portrait" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="BackgroundColor" value="0x112544FF" />
+    <preference name="KeepRunning" value="true" />
+</widget>

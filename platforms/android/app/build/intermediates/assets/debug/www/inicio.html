@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
+    <meta name="format-detection" content="telephone=no"> 
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="css/material.min.css">
+    <link rel="stylesheet" href="css/estilo.css">
+	<title>Meu Perfil</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+</head>
+<body>
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+	  <header class="mdl-layout__header">
+	    <div class="mdl-layout__header-row">
+	    	<div aria-expanded="false" role="button" tabindex="0" class="mdl-layout__drawer-button"><i class="material-icons"></i>
+	    	</div>
+	      <!-- Title -->
+	      <span class="mdl-layout-title" id="titulopag">Meu Perfil</span>
+	      <!-- Add spacer, to align navigation to the right -->
+	    </div>
+	  </header>
+	  <div class="mdl-layout__drawer">
+		<script>
+		  	$( document ).ready(function() {
+		  		bv.innerHTML = ("Seja bem-vindo - " + localStorage.getItem("callsign") + "!")
+			  });
+	    </script>
+		<span class="mdl-layout-title" id="bvt"><p id="bv"></p></span>
+		<nav class="mdl-navigation">
+		  <a class="mdl-navigation__link">Meu Perfil</a>
+		  <a class="mdl-navigation__link" id="pevoo">Status do Voo</a>
+		  <a class="mdl-navigation__link" id="desconectar">Desconectar</a>
+		</nav>
+	  </div>
+
+	  <main class="mdl-layout__content">
+		<div class="page-content">	
+			<div class="mdl-card center">
+				<script type="text/javascript">
+					$( document ).ready(function() {
+						var parametros = {
+							"pilotID" : localStorage.getItem("callsign")
+						};
+						$.ajax({
+							data: parametros,
+							url: 'http://eagleair.com.br/intranet/action.php/APVacars?data=infopiloto',
+							type: 'get',
+							success: function (response) {
+							            	localStorage.setItem("dadospiloto", response);
+							            }
+						});
+						var str = localStorage.getItem("dadospiloto");
+						if (str == "") {
+							str = "1;"
+						}
+						var dpiloto = new Array();
+						dpiloto = str.split(";");
+
+						var b = document.querySelector("img"); 
+						b.setAttribute("src", dpiloto[5]);
+
+						$("#nome").val(dpiloto[0]);
+						$("#sobrenome").val(dpiloto[1]);
+						$("#horas").val(dpiloto[2]);
+						$("#voos").val(dpiloto[3]);
+						var dinheiro1 = parseFloat(dpiloto[4]);
+						$("#dinheiro").val(dinheiro1.toFixed(2).replace(".",","));
+						$("#td").val(dpiloto[6]);
+					});
+				</script>
+	      		<div style="background-color: red;" class="mdl-card__title">
+	      			<h2 style="font-size: 15px;" class="mdl-card__title-text">Informações do Piloto</h2>
+	      		</div>
+
+	      		<img class="img center" src="">
+	      		<div class="mdl-card__supporting-text">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="nome" disabled>
+					    <label class="mdl-textfield__label" for="nvoo">Nome</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="sobrenome" disabled>
+					    <label class="mdl-textfield__label" for="nvoo">Sobrenome</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="horas" disabled>
+					    <label class="mdl-textfield__label" for="nvoo">Horas</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="voos" disabled>
+					    <label class="mdl-textfield__label" for="nvoo">Voos</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="dinheiro" disabled>
+					    <label class="mdl-textfield__label" for="nvoo">Dinheiro</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="td" disabled>
+					    <label class="mdl-textfield__label" for="nvoo">Media de Pouso</label>
+					</div>
+	      		</div>
+	      	</div>
+	      	<p></p>
+	      	<div class="mdl-card center">
+	      		<script type="text/javascript">
+					$( document ).ready(function() {
+						$.ajax({
+							data: "",
+							url: 'http://eagleair.com.br/intranet/action.php/APVacars?data=noticias',
+							type: 'get',
+							success: function (response) {
+							            	noticias.innerHTML = response;
+							            }
+						});
+					});
+				</script>
+	      		<div style="background-color: green;" class="mdl-card__title">
+	      			<h2 style="font-size: 15px;" class="mdl-card__title-text">Últimas Notícias</h2>
+	      		</div>
+
+	      		<p class="mdl-card__supporting-text" id="noticias" white-space: normal>
+
+	      		</p>
+	      	</div>
+		</div>
+	  </main>
+
+	</div>
+
+	<script type="text/javascript" src="js/material.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+</body>
+</html>

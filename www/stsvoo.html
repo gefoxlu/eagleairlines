@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
+    <meta name="format-detection" content="telephone=no"> 
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="css/material.min.css">
+    <link rel="stylesheet" href="css/estilo.css">
+	<title>Status do Voo</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+		$( document ).ready(function() {
+			localStorage.setItem("titulo", document.title)
+		});
+	</script>
+</head>
+<body>
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+	  <header class="mdl-layout__header">
+	    <div class="mdl-layout__header-row">
+	    	<div aria-expanded="false" role="button" tabindex="0" class="mdl-layout__drawer-button"><i class="material-icons"></i>
+	    	</div>
+	      <span class="mdl-layout-title" id="titulopag">Status do Voo</span>
+	    </div>
+	      <!-- Tabs -->
+	    <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+		    <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Informações</a>
+		    <a href="#fixed-tab-2" class="mdl-layout__tab" id="mapas">Mapa</a>
+	    </div>
+	  </header>
+	  <div class="mdl-layout__drawer">
+		<script>
+		  	$( document ).ready(function() {
+		  		bv.innerHTML = ("Seja bem-vindo - " + localStorage.getItem("callsign") + "!");
+		  		var str = localStorage.getItem("dadosvoo");
+				var dvoo = new Array();
+				dvoo = str.split(";");
+				titulopag.innerHTML = ("Status do Voo - " + dvoo[0]);
+				$("#nvoo").val(dvoo[0]);
+				$("#aervoo").val(dvoo[1]);
+				localStorage.setItem("lat", dvoo[2]);
+				localStorage.setItem("lon", dvoo[3]);
+				localStorage.setItem("hdg", dvoo[4]);
+				$("#hdgvoo").val(dvoo[4]);
+				$("#altvoo").val(dvoo[5]);
+				$("#gsvoo").val(dvoo[6]);
+				$("#depvoo").val(dvoo[7]);
+				$("#arrvoo").val(dvoo[8]);
+				$("#distvoo").val(dvoo[9] + "nm");
+				$("#tempvoo").val(dvoo[10]);
+				$("#stsvoo").val(dvoo[11]);
+				$("#voo1").val(dvoo[12]);
+				localStorage.setItem("deplat", dvoo[13]);
+				localStorage.setItem("deplon", dvoo[14]);
+				localStorage.setItem("arrlat", dvoo[15]);
+				localStorage.setItem("arrlon", dvoo[16]);
+				var intervalo = window.setInterval(pegarvoost, 5000);
+			  });
+	    </script>
+		<span class="mdl-layout-title" id="bvt"><p id="bv"></p></span>
+		<nav class="mdl-navigation">
+		  <a class="mdl-navigation__link" href="inicio.html">Meu Perfil</a>
+		  <a disabled class="mdl-navigation__link" >Status do Voo</a>
+		  <a class="mdl-navigation__link" id="desconectar">Desconectar</a>
+		</nav>
+	  </div>
+
+	  <main class="mdl-layout__content">
+	  	<section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+	      <div class="page-content">
+	      	<div class="mdl-card center">
+	      		<div style="background-color: red;" class="mdl-card__title">
+	      			<h2 style="font-size: 15px;" class="mdl-card__title-text">Informações do Voo</h2>
+	      		</div>
+
+	      		<div class="mdl-card__supporting-text">
+	      			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="nvoo" disabled>
+					    <label class="mdl-textfield__label" for="nvoo">Número do Voo</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="depvoo" disabled>
+					    <label class="mdl-textfield__label" for="nvoo">Origem</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="arrvoo" disabled>
+					    <label class="mdl-textfield__label" for="nvoo">Destino</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="aervoo" disabled>
+					    <label class="mdl-textfield__label" for="nvoo">Prefixo Aeronave</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="hdgvoo" disabled>
+					    <label class="mdl-textfield__label" for="nvoo">Proa</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="altvoo" disabled>
+					    <label class="mdl-textfield__label" for="nvoo">Altitude</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="gsvoo" disabled>
+					    <label class="mdl-textfield__label" for="nvoo">GS</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="distvoo" disabled>
+					    <label class="mdl-textfield__label" for="nvoo">Distância Restante</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="tempvoo" disabled>
+					    <label class="mdl-textfield__label" for="nvoo">Tempo Restante</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="stsvoo" disabled>
+					    <label class="mdl-textfield__label" for="nvoo">Estado do Voo</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					    <input class="mdl-textfield__input" type="text" id="voo1" disabled>
+					    <label class="mdl-textfield__label" for="nvoo">Sistema de Voo</label>
+					</div>
+	      		</div>
+
+	      		<div class="mdl-card__menu">
+				    <button style="margin-top: -10px;" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="refresh">
+				      <i class="material-icons" style="color: white;">refresh</i>
+				    </button>
+				</div>
+	      	</div>
+	      </div>
+	    </section>
+	    <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+	      <div class="page-content">
+	      	<div id="map"></div>
+		    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSJauPbS0ACR5ZLwhtKEX_fZuavru8zDw">
+		    </script>
+	      </div>
+	    </section>
+	  </main>
+	</div>
+
+	<script type="text/javascript" src="js/material.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+</body>
+</html>

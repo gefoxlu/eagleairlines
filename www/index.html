@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
+        <meta name="format-detection" content="telephone=no"> 
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="css/material.min.css">
+        <link rel="stylesheet" href="css/estilo.css">
+        <title>Eagle Airlines</title>
+    </head>
+    <body>
+        <img src="img/logo.png" class="center" width="70%" id="logo">
+        <p id="esp"></p>
+        <div class="mdl-card mdl-shadow--2dp center" id="login-card">
+            <div class="mdl-card__title mdl-shadow--2dp">
+                <h2 style="font-size: 20px;" class="mdl-card__title-text">Login</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <form method="post" id="formulario">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="callsign">
+                    <label class="mdl-textfield__label" for="callsign">Callsign</label>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="password" id="senha">
+                    <label class="mdl-textfield__label" for="senha">Senha</label>
+                  </div>
+                  <p></p>
+                  <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored center" type="button" value="Login" id="enviar" >
+                </form>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript" src="js/material.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var cs = localStorage.getItem("callsign");
+                var ps = localStorage.getItem("senha");
+                $("#callsign").val(cs)
+                $("#senha").val(ps)
+                if($("#senha").val() == ""){
+                    //NADA
+                }
+                else {
+                    login();
+                }
+                });
+        </script>
+    </body>
+</html>

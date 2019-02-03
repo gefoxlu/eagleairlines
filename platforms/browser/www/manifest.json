@@ -1,0 +1,12 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Eagle Airlines",
+  "short_name": "Eagle Airlines",
+  "version": "br.com.eagleair.eagleairlines",
+  "description": "Aplicativo destinado aos pilotos da companhia aérea virtual Eagle Airlines.",
+  "author": "Luan Lopes",
+  "icons": [],
+  "orientation": "portrait",
+  "start_url": "index.html"
+}

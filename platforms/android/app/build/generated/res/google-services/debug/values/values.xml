@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">910923866681-pti4q7trpb5l8q0547l9pgkngnq7nh9f.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://eagle-app-229120.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">910923866681</string>
+    <string name="google_api_key" translatable="false">AIzaSyA1x1v4Z7xl25qmqijryzEa1YYe8j3sFho</string>
+    <string name="google_app_id" translatable="false">1:910923866681:android:19eea95b814c5389</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyA1x1v4Z7xl25qmqijryzEa1YYe8j3sFho</string>
+    <string name="google_storage_bucket" translatable="false">eagle-app-229120.appspot.com</string>
+</resources>

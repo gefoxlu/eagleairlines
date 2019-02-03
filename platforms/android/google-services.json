@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "910923866681",
+    "firebase_url": "https://eagle-app-229120.firebaseio.com",
+    "project_id": "eagle-app-229120",
+    "storage_bucket": "eagle-app-229120.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910923866681:android:19eea95b814c5389",
+        "android_client_info": {
+          "package_name": "br.com.eagleair.eagleairlines"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "910923866681-pti4q7trpb5l8q0547l9pgkngnq7nh9f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1x1v4Z7xl25qmqijryzEa1YYe8j3sFho"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
