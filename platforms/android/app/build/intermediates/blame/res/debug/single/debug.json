@@ -40,12 +40,12 @@
         "source": "C:\\Users\\Cleria\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.1.0.aar\\8318f2cda97b7a2ae9d308c626c2e773\\res\\layout\\notification_template_big_media_narrow_custom.xml"
     },
     {
-        "merged": "C:\\Users\\Cleria\\Desktop\\Estudos Alura\\Cordova\\eagleairlines\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_disabled.xml.flat",
-        "source": "C:\\Users\\Cleria\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-16.0.1.aar\\de3fbe96cae9a7450a03251e6bf4b90e\\res\\drawable\\common_google_signin_btn_icon_disabled.xml"
-    },
-    {
         "merged": "C:\\Users\\Cleria\\Desktop\\Estudos Alura\\Cordova\\eagleairlines\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21_notification_template_icon_group.xml.flat",
         "source": "C:\\Users\\Cleria\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\90820f35230fad8c1e23b8f4b412fee2\\res\\layout-v21\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "C:\\Users\\Cleria\\Desktop\\Estudos Alura\\Cordova\\eagleairlines\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_disabled.xml.flat",
+        "source": "C:\\Users\\Cleria\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-16.0.1.aar\\de3fbe96cae9a7450a03251e6bf4b90e\\res\\drawable\\common_google_signin_btn_icon_disabled.xml"
     },
     {
         "merged": "C:\\Users\\Cleria\\Desktop\\Estudos Alura\\Cordova\\eagleairlines\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",

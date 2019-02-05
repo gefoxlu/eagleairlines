@@ -1,3 +1,30 @@
+document.addEventListener('deviceready', onDeviceReady, false);
+
+function onDeviceReady() {
+        document.addEventListener("pause", onPause, false);
+        document.addEventListener("resume", onResume, false);
+        cordova.plugins.backgroundMode.setDefaults({ silent: true });
+}
+
+function onPause() {
+	if (voo = false) {
+		cordova.plugins.backgroundMode.disable();
+		cordova.plugins.backgroundMode.setDefaults({ silent: true });
+		window.setInterval(clearInterval);
+	} else {
+		cordova.plugins.backgroundMode.enable();
+		cordova.plugins.backgroundMode.onactivate = function () {
+			window.setInterval(pegarvoost, 5000)
+		}
+	}
+}
+
+function onResume() {
+	cordova.plugins.backgroundMode.disable();
+	window.setInterval(clearInterval);
+}
+
+
 function validaForm(){
     // Campos de texto
     if($("#callsign").val() == ""){
@@ -26,8 +53,10 @@ function pegarvoost(){
 					if(response == 1){
 		                alert("Atualmente n\u00e3o consta nenhum voo seu sendo realizado!");
 		                location.href = "inicio.html";
+		                var voo = false;
 		                window.clearInterval(intervalo);
 		            } else {
+		            	var voo = true;
 		            	localStorage.setItem("dadosvoo", response);
 		            	var str = localStorage.getItem("dadosvoo");
 						var dvoo = new Array();
@@ -44,23 +73,42 @@ function pegarvoost(){
 						$("#arrvoo").val(dvoo[8]);
 						$("#distvoo").val(dvoo[9] + "nm");
 						$("#tempvoo").val(dvoo[10]);
-						var tp = dvoo[10].replace(':','.') + 0.01;
-						if ((tp > 0.01 || tp <= 0.20) || tp1==false) {
-								tp1 = true
-								alert("Seu voo est\u00e1 prestes a chegar ao destino, reassuma a cabine de comando!");
+						var tp = dvoo[10].replace(':','.');
+						var tp2 = Number(tp) + 0.01;
+						var texto = dvoo[0] + " | " + dvoo[7] + " - " + dvoo[8] + " | " + dvoo[9] + "nm / " + dvoo[10]
+						cordova.plugins.backgroundMode.configure({
+							title:  'Voo em Andamento',
+							text:   texto,
+							silent: false
+						});
+						if ((tp2 > 0.01 && tp2 < 0.20) && tp1 == false) {
+							if (cordova.plugins.backgroundMode.isActive() == true) {
+								tp1 = true;
 								cordova.plugins.notification.local.schedule({
-    								title: 'Aviso de Voo | ',
+    								title: 'Aviso de Voo | ' + dvoo[7] + " - " + dvoo[8],
     								text: 'Seu voo est\u00e1 prestes a chegar ao destino, reassuma a cabine de comando!',
     								foreground: true
 								});
+							} else {
+								tp1 = true;
+								alert("Seu voo est\u00e1 prestes a chegar ao destino, reassuma a cabine de comando!");
+								cordova.plugins.notification.local.schedule({
+    								title: 'Aviso de Voo | ' + dvoo[7] + " - " + dvoo[8],
+    								text: 'Seu voo est\u00e1 prestes a chegar ao destino, reassuma a cabine de comando!',
+    								foreground: true
+								});
+							}		
 						}
 						$("#stsvoo").val(dvoo[11]);
 						$("#voo1").val(dvoo[12]);
 						atuinfo();
-		            };
-				}
+							}
+		            }
 	});
 }
+
+var voo = false;
+var tp1 = false;
 
 $("#pevoo").click(function pegarvoos(){
 	var parametros = {
@@ -73,54 +121,20 @@ $("#pevoo").click(function pegarvoos(){
 		success: function (response) {
 					if(response == 1){
 		                alert("Atualmente n\u00e3o consta nenhum voo seu sendo realizado!");
+		                var voo = false;
 		                window.clearInterval(intervalo);
 		            } else {
 		            	localStorage.setItem("dadosvoo", response);
 		            	location.href = "stsvoo.html";
-		            	criar_mapa();
-		            	var tp1 = false;
+		            	tp1 = false;
+		            	pegarvoost();
 		            };
 				}
 	});
 });
 
 $("#refresh").click(function pegarvoos(){
-	var parametros = {
-		"pilotID" : localStorage.getItem("callsign")
-	};
-	$.ajax({
-		data: parametros,
-		url: 'http://eagleair.com.br/intranet/action.php/APVacars?data=pegarvooonline',
-		type: 'get',
-		success: function (response) {
-					if(response == 1){
-		                alert("Atualmente n\u00e3o consta nenhum voo seu sendo realizado!");
-		                location.href = "inicio.html";
-		                window.clearInterval(intervalo);
-		            } else {
-		            	localStorage.setItem("dadosvoo", response);
-		            	var intervalo = window.setInterval(pegarvoost, 5000);
-		            	var str = localStorage.getItem("dadosvoo");
-						var dvoo = new Array();
-						dvoo = str.split(";");
-		            	$("#nvoo").val(dvoo[0]);
-						$("#aervoo").val(dvoo[1]);
-						localStorage.setItem("lat", dvoo[2]);
-						localStorage.setItem("lon", dvoo[3]);
-						localStorage.setItem("hdg", dvoo[4]);
-						$("#hdgvoo").val(dvoo[4]);
-						$("#altvoo").val(dvoo[5]);
-						$("#gsvoo").val(dvoo[6]);
-						$("#depvoo").val(dvoo[7]);
-						$("#arrvoo").val(dvoo[8]);
-						$("#distvoo").val(dvoo[9] + "nm");
-						$("#tempvoo").val(dvoo[10]);
-						$("#stsvoo").val(dvoo[11]);
-						$("#voo1").val(dvoo[12]);
-						atuinfo();
-		            };
-				}
-	});
+	pegarvoost()
 });
 
 function login () {
@@ -171,7 +185,6 @@ var latLongArr;
 var flightPath;
 var marker;
 
-
 function atuinfo(){
 	lat = localStorage.getItem("lat");
 	lon = localStorage.getItem("lon");
@@ -182,7 +195,7 @@ function atuinfo(){
 	arrlon = localStorage.getItem("arrlon");
 }
 
-function criar_mapa(){
+$("#mapas").click(function criar_mapa(){
 	var latLong = new google.maps.LatLng(lat, lon)
 	map = new google.maps.Map(document.getElementById('map'), {autozoom: true, refreshTime: 12000, autorefresh: true, disableDefaultUI: true, zoom: 4, center: latLong, styles: [
   {
@@ -453,7 +466,7 @@ function criar_mapa(){
 	popular_mapa();
 	setInterval(function(){liveRefresh()}, 12000);
 
-};
+});
 
 function liveRefresh(){
 	limpar_mapa();

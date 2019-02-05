@@ -44,12 +44,14 @@ function pegarvoost(){
 						$("#arrvoo").val(dvoo[8]);
 						$("#distvoo").val(dvoo[9] + "nm");
 						$("#tempvoo").val(dvoo[10]);
-						var tp = dvoo[10].replace(':','.') + 0.01;
-						if ((tp > 0.01 || tp <= 0.20) || tp1==false) {
-								tp1 = true
+						var tp = dvoo[10].replace(':','.');
+						var tp2 = Number(tp) + 0.01;
+						$("#tp").val(tp1);
+						if ((tp2 > 0.01 && tp2 < 0.20) && tp1 == false) {
+								tp1 = true;
 								alert("Seu voo est\u00e1 prestes a chegar ao destino, reassuma a cabine de comando!");
 								cordova.plugins.notification.local.schedule({
-    								title: 'Aviso de Voo | ',
+    								title: 'Aviso de Voo | ' + dvoo[7] + " - " + dvoo[8],
     								text: 'Seu voo est\u00e1 prestes a chegar ao destino, reassuma a cabine de comando!',
     								foreground: true
 								});
@@ -61,6 +63,8 @@ function pegarvoost(){
 				}
 	});
 }
+
+var tp1 = false;
 
 $("#pevoo").click(function pegarvoos(){
 	var parametros = {
@@ -77,8 +81,7 @@ $("#pevoo").click(function pegarvoos(){
 		            } else {
 		            	localStorage.setItem("dadosvoo", response);
 		            	location.href = "stsvoo.html";
-		            	criar_mapa();
-		            	var tp1 = false;
+		            	tp1 = false;
 		            };
 				}
 	});
@@ -171,7 +174,6 @@ var latLongArr;
 var flightPath;
 var marker;
 
-
 function atuinfo(){
 	lat = localStorage.getItem("lat");
 	lon = localStorage.getItem("lon");
@@ -182,7 +184,7 @@ function atuinfo(){
 	arrlon = localStorage.getItem("arrlon");
 }
 
-function criar_mapa(){
+$("#mapas").click(function criar_mapa(){
 	var latLong = new google.maps.LatLng(lat, lon)
 	map = new google.maps.Map(document.getElementById('map'), {autozoom: true, refreshTime: 12000, autorefresh: true, disableDefaultUI: true, zoom: 4, center: latLong, styles: [
   {
@@ -453,7 +455,7 @@ function criar_mapa(){
 	popular_mapa();
 	setInterval(function(){liveRefresh()}, 12000);
 
-};
+});
 
 function liveRefresh(){
 	limpar_mapa();

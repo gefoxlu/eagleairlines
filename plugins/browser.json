@@ -24,6 +24,9 @@
     },
     "cordova-plugin-local-notification": {
       "PACKAGE_NAME": "br.com.eagleair.eagleairlines"
+    },
+    "cordova-plugin-background-mode": {
+      "PACKAGE_NAME": "br.com.eagleair.eagleairlines"
     }
   },
   "dependent_plugins": {

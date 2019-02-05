@@ -31,6 +31,18 @@
             {
               "xml": "<feature name=\"LocalNotification\"><param name=\"android-package\" value=\"de.appplant.cordova.plugin.localnotification.LocalNotification\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"BackgroundMode\"><param name=\"android-package\" value=\"de.appplant.cordova.plugin.background.BackgroundMode\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"KeepRunning\" value=\"true\" />",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"AndroidLaunchMode\" value=\"singleInstance\" />",
+              "count": 1
             }
           ]
         }
@@ -70,6 +82,10 @@
             {
               "xml": "<receiver android:directBootAware=\"true\" android:exported=\"false\" android:name=\"de.appplant.cordova.plugin.localnotification.RestoreReceiver\"><intent-filter><action android:name=\"android.intent.action.LOCKED_BOOT_COMPLETED\" /><action android:name=\"android.intent.action.BOOT_COMPLETED\" /></intent-filter></receiver>",
               "count": 1
+            },
+            {
+              "xml": "<service android:name=\"de.appplant.cordova.plugin.background.ForegroundService\" />",
+              "count": 1
             }
           ],
           "/manifest": [
@@ -79,7 +95,7 @@
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
-              "count": 1
+              "count": 2
             }
           ]
         }
@@ -117,6 +133,9 @@
     },
     "cordova-plugin-local-notification": {
       "ANDROID_SUPPORT_V4_VERSION": "26.+",
+      "PACKAGE_NAME": "br.com.eagleair.eagleairlines"
+    },
+    "cordova-plugin-background-mode": {
       "PACKAGE_NAME": "br.com.eagleair.eagleairlines"
     }
   },
@@ -169,6 +188,15 @@
       "clobbers": [
         "cordova.plugins.notification.local"
       ]
+    },
+    {
+      "id": "cordova-plugin-background-mode.BackgroundMode",
+      "file": "plugins/cordova-plugin-background-mode/www/background-mode.js",
+      "pluginId": "cordova-plugin-background-mode",
+      "clobbers": [
+        "cordova.plugins.backgroundMode",
+        "plugin.backgroundMode"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -178,6 +206,7 @@
     "cordova-plugin-fcm": "2.1.2",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-badge": "0.8.8",
-    "cordova-plugin-local-notification": "0.9.0-beta.3"
+    "cordova-plugin-local-notification": "0.9.0-beta.3",
+    "cordova-plugin-background-mode": "0.7.2"
   }
 }

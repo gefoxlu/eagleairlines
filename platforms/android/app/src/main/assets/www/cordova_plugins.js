@@ -47,6 +47,15 @@ module.exports = [
     "clobbers": [
       "cordova.plugins.notification.local"
     ]
+  },
+  {
+    "id": "cordova-plugin-background-mode.BackgroundMode",
+    "file": "plugins/cordova-plugin-background-mode/www/background-mode.js",
+    "pluginId": "cordova-plugin-background-mode",
+    "clobbers": [
+      "cordova.plugins.backgroundMode",
+      "plugin.backgroundMode"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -58,7 +67,8 @@ module.exports.metadata =
   "cordova-plugin-fcm": "2.1.2",
   "cordova-plugin-device": "2.0.2",
   "cordova-plugin-badge": "0.8.8",
-  "cordova-plugin-local-notification": "0.9.0-beta.3"
+  "cordova-plugin-local-notification": "0.9.0-beta.3",
+  "cordova-plugin-background-mode": "0.7.2"
 };
 // BOTTOM OF METADATA
 });
