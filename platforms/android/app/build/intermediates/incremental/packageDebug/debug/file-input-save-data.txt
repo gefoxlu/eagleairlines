@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Feb 05 01:53:59 CET 2019
+#Tue Feb 05 04:00:32 CET 2019
 122.file=C\:\\Users\\Cleria\\Desktop\\Estudos Alura\\Cordova\\eagleairlines\\platforms\\android\\app\\build\\intermediates\\res\\debug\\resources-debug.ap_\\res\\mipmap-xxhdpi-v4\\icon.png
 60.set=ASSET
 129.file=C\:\\Users\\Cleria\\Desktop\\Estudos Alura\\Cordova\\eagleairlines\\platforms\\android\\app\\build\\intermediates\\res\\debug\\resources-debug.ap_\\res\\drawable\\common_google_signin_btn_text_disabled.xml

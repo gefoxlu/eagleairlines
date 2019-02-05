@@ -4,6 +4,7 @@ function onDeviceReady() {
         document.addEventListener("pause", onPause, false);
         document.addEventListener("resume", onResume, false);
         cordova.plugins.backgroundMode.setDefaults({ silent: true });
+        FirebaseMessaging.getInstance().subscribeToTopic("all");
 }
 
 function onPause() {
@@ -79,6 +80,7 @@ function pegarvoost(){
 						cordova.plugins.backgroundMode.configure({
 							title:  'Voo em Andamento',
 							text:   texto,
+							hidden: false,
 							silent: false
 						});
 						if ((tp2 > 0.01 && tp2 < 0.20) && tp1 == false) {
