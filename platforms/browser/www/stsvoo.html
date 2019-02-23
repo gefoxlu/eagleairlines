@@ -8,15 +8,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="css/material.min.css">
     <link rel="stylesheet" href="css/estilo.css">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 	<title>Status do Voo</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript">
-		$( document ).ready(function() {
-			localStorage.setItem("titulo", document.title)
-		});
-	</script>
 </head>
 <body>
+    <script type="text/javascript" src="js/app.js"></script>
 	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
 	  <header class="mdl-layout__header">
 	    <div class="mdl-layout__header-row">
@@ -27,13 +23,13 @@
 	      <!-- Tabs -->
 	    <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
 		    <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Informações</a>
-		    <a href="#fixed-tab-2" class="mdl-layout__tab" id="mapas">Mapa</a>
+		    <a href="#fixed-tab-2" class="mdl-layout__tab" id="mapas" onclick="criar_mapa();">Mapa</a>
 	    </div>
 	  </header>
-	  <div class="mdl-layout__drawer">
+	  <div class="mdl-layout__drawer" id="menu">
+		<script type="text/javascript">menus();</script>
 		<script>
 		  	$( document ).ready(function() {
-		  		bv.innerHTML = ("Seja bem-vindo - " + localStorage.getItem("callsign") + "!");
 		  		var str = localStorage.getItem("dadosvoo");
 				var dvoo = new Array();
 				dvoo = str.split(";");
@@ -59,12 +55,6 @@
 				var intervalo = window.setInterval(pegarvoost, 5000);
 			  });
 	    </script>
-		<span class="mdl-layout-title" id="bvt"><p id="bv"></p></span>
-		<nav class="mdl-navigation">
-		  <a class="mdl-navigation__link" href="inicio.html">Meu Perfil</a>
-		  <a disabled class="mdl-navigation__link" >Status do Voo</a>
-		  <a class="mdl-navigation__link" id="desconectar">Desconectar</a>
-		</nav>
 	  </div>
 
 	  <main class="mdl-layout__content">
@@ -120,11 +110,10 @@
 					    <input class="mdl-textfield__input" type="text" id="voo1" disabled>
 					    <label class="mdl-textfield__label" for="nvoo">Sistema de Voo</label>
 					</div>
-					<input class="mdl-textfield__input" type="text" id="tp" disabled>
 	      		</div>
 
 	      		<div class="mdl-card__menu">
-				    <button style="margin-top: -10px;" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="refresh">
+				    <button style="margin-top: -10px;" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="refresh" onClick="pegarvoost();">
 				      <i class="material-icons" style="color: white;">refresh</i>
 				    </button>
 				</div>
@@ -142,7 +131,6 @@
 	</div>
 
 	<script type="text/javascript" src="js/material.min.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
 </body>
 </html>

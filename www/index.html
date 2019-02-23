@@ -8,9 +8,11 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="css/material.min.css">
         <link rel="stylesheet" href="css/estilo.css">
+        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
         <title>Eagle Airlines</title>
     </head>
     <body>
+        <script type="text/javascript" src="js/app.js"></script>
         <img src="img/logo.png" class="center" width="70%" id="logo">
         <p id="esp"></p>
         <div class="mdl-card mdl-shadow--2dp center" id="login-card">
@@ -20,7 +22,7 @@
             <div class="mdl-card__supporting-text">
                 <form method="post" id="formulario">
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="callsign">
+                    <input class="mdl-textfield__input" type="text" id="callsign" style="text-transform: uppercase">
                     <label class="mdl-textfield__label" for="callsign">Callsign</label>
                   </div>
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -28,27 +30,12 @@
                     <label class="mdl-textfield__label" for="senha">Senha</label>
                   </div>
                   <p></p>
-                  <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored center" type="button" value="Login" id="enviar" >
+                  <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored center" type="button" value="Login" id="enviar" onclick="login();">
                 </form>
             </div>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script type="text/javascript" src="js/material.min.js"></script>
-        <script type="text/javascript" src="js/app.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                var cs = localStorage.getItem("callsign");
-                var ps = localStorage.getItem("senha");
-                $("#callsign").val(cs)
-                $("#senha").val(ps)
-                if($("#senha").val() == ""){
-                    //NADA
-                }
-                else {
-                    login();
-                }
-                });
-        </script>
+        <script type="text/javascript">inicio();</script>
     </body>
 </html>

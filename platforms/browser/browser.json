@@ -49,6 +49,9 @@
     },
     "cordova-plugin-background-mode": {
       "PACKAGE_NAME": "br.com.eagleair.eagleairlines"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "br.com.eagleair.eagleairlines"
     }
   },
   "dependent_plugins": {},
@@ -147,6 +150,22 @@
       "id": "cordova-plugin-background-mode.BackgroundMode.Proxy",
       "pluginId": "cordova-plugin-background-mode",
       "runs": true
+    },
+    {
+      "file": "plugins/cordova-plugin-dialogs/www/notification.js",
+      "id": "cordova-plugin-dialogs.notification",
+      "pluginId": "cordova-plugin-dialogs",
+      "merges": [
+        "navigator.notification"
+      ]
+    },
+    {
+      "file": "plugins/cordova-plugin-dialogs/www/browser/notification.js",
+      "id": "cordova-plugin-dialogs.notification_browser",
+      "pluginId": "cordova-plugin-dialogs",
+      "merges": [
+        "navigator.notification"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -157,6 +176,7 @@
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-badge": "0.8.8",
     "cordova-plugin-local-notification": "0.9.0-beta.3",
-    "cordova-plugin-background-mode": "0.7.2"
+    "cordova-plugin-background-mode": "0.7.2",
+    "cordova-plugin-dialogs": "2.0.1"
   }
 }

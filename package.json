@@ -16,6 +16,7 @@
         "cordova-plugin-background-mode": "^0.7.2",
         "cordova-plugin-badge": "^0.8.8",
         "cordova-plugin-device": "^2.0.2",
+        "cordova-plugin-dialogs": "^2.0.1",
         "cordova-plugin-fcm": "^2.1.2",
         "cordova-plugin-local-notification": "git+https://github.com/katzer/cordova-plugin-local-notifications.git",
         "cordova-plugin-local-notifications": "^1.0.0",
@@ -37,7 +38,8 @@
             "cordova-plugin-local-notification": {
                 "ANDROID_SUPPORT_V4_VERSION": "26.+"
             },
-            "cordova-plugin-background-mode": {}
+            "cordova-plugin-background-mode": {},
+            "cordova-plugin-dialogs": {}
         }
     }
 }

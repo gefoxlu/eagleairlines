@@ -28,6 +28,11 @@ body{
     position: relative;
 }
 
+.mdl-button--accent{
+	color: #ff1100;
+	background-color: #ff1100;
+}
+
 .mdl-card__title{
 	background-color: #3f51b5;
 }
@@ -63,4 +68,5 @@ body{
 #noticias{
 	margin-right: 2px;
 	margin-left: 2px;
+	word-wrap: break-word;
 }
